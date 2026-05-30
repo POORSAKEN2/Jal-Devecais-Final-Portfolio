@@ -2,6 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
+
+type SocialIconProps = {
+  className?: string;
+};
+
 const OpenInFullIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -95,6 +100,30 @@ const ExpandIcon = ({ expanded }: { expanded: boolean }) => (
         />
       </>
     )}
+  </svg>
+);
+
+const GitHubIcon = ({ className = "size-5" }: SocialIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.11.78-.25.78-.55 0-.27-.01-1.17-.02-2.13-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.03 0 0 .96-.31 3.16 1.17.92-.26 1.9-.38 2.88-.39.98.01 1.96.13 2.88.39 2.2-1.48 3.16-1.17 3.16-1.17.62 1.57.23 2.74.11 3.03.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.78 1.05.78 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+  </svg>
+);
+
+const LinkedInIcon = ({ className = "size-5" }: SocialIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
   </svg>
 );
 
@@ -227,6 +256,21 @@ const stackCards = [
       "Google Play Store",
       "Apple App Store",
     ],
+  },
+];
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    handle: "@Jal-Devecais",
+    href: "https://github.com/Jal-Devecais",
+    Icon: GitHubIcon,
+  },
+  {
+    label: "LinkedIn",
+    handle: "Jal Devecais",
+    href: "https://www.linkedin.com/in/jal-devecais/",
+    Icon: LinkedInIcon,
   },
 ];
 
@@ -453,6 +497,47 @@ export default function Home() {
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Socials
                 </span>
+
+                <div className="flex h-full flex-col justify-end">
+                  <div className="mb-5 max-w-[13rem]">
+                    <h3 className="text-3xl font-semibold leading-none tracking-tight text-black">
+                      Find my work
+                    </h3>
+                    <p className="mt-3 text-sm leading-5 text-black/60">
+                      Code, product notes, and professional updates in one tap.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-3">
+                    {socialLinks.map(({ label, handle, href, Icon }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Open ${label} profile`}
+                        className="group flex min-h-[72px] cursor-pointer items-center justify-between gap-4 rounded-[20px] border border-black/10 bg-white px-4 py-3 text-black shadow-sm transition-colors duration-200 hover:border-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-[#F3F3F3]"
+                      >
+                        <span className="flex min-w-0 items-center gap-3">
+                          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#F3F3F3] text-black transition-colors duration-200 group-hover:bg-white group-hover:text-black">
+                            <Icon />
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block text-base font-semibold leading-5">
+                              {label}
+                            </span>
+                            <span className="block truncate text-xs leading-5 text-black/55 transition-colors duration-200 group-hover:text-white/70">
+                              {handle}
+                            </span>
+                          </span>
+                        </span>
+                        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-black text-white transition-colors duration-200 group-hover:bg-white group-hover:text-black">
+                          <OpenInFullIcon />
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="relative aspect-square rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
@@ -497,8 +582,6 @@ export default function Home() {
                   <div className="mt-5 min-h-0 flex-1 overflow-y-auto pr-1">
                     <div className="grid h-full gap-2">
                       {stackCards.map((card) => {
-                        const visibleTools = card.tools.slice(0, 3);
-
                         return (
                           <article
                             key={card.title}
