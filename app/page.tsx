@@ -59,6 +59,45 @@ const MusicArrowIcon = ({ direction }: { direction: "previous" | "next" }) => (
   </svg>
 );
 
+const ExpandIcon = ({ expanded }: { expanded: boolean }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    className="text-current"
+  >
+    {expanded ? (
+      <path
+        d="M18 6L6 18M6 6l12 12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ) : (
+      <>
+        <path
+          d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9 9L4 4M15 9l5-5M15 15l5 5M9 15l-5 5"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </>
+    )}
+  </svg>
+);
+
 const favoriteMusic = [
   
   {
@@ -135,6 +174,62 @@ const selectedWorks = [
   },
 ];
 
+const stackCards = [
+  {
+    title: "Interface",
+    description: "Web, mobile, and product design.",
+    tools: [
+      "React.js",
+      "Tailwind CSS",
+      "React Native",
+      "Angular",
+      "Ionic",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "User Research",
+    ],
+  },
+  {
+    title: "Server",
+    description: "APIs, databases, and integrations.",
+    tools: [
+      "Node.js",
+      "Express.js",
+      "Laravel",
+      "RESTful APIs",
+      "Axios",
+      "HTTP",
+      "MongoDB",
+      "MySQL",
+      "PostgreSQL",
+      "Studio 3T",
+    ],
+  },
+  {
+    title: "Ship",
+    description: "Debugging, version control, and deploys.",
+    tools: [
+      "Git",
+      "GitHub",
+      "Bitbucket",
+      "Firebase",
+      "Vercel",
+      "Netlify",
+      "Postman",
+      "Chrome DevTools",
+      "Expo Go",
+      "Android Studio",
+      "Xcode",
+      "Google Play Store",
+      "Apple App Store",
+    ],
+  },
+];
+
 const detailedExperiences = [
   {
     role: "Software Developer",
@@ -198,6 +293,7 @@ const detailedExperiences = [
 
 export default function Home() {
   const [showMore, setShowMore] = useState(false);
+  const [isStackModalOpen, setIsStackModalOpen] = useState(false);
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
   const [activeMusicIndex, setActiveMusicIndex] = useState(0);
   const visibleWorks = showMore ? selectedWorks : selectedWorks.slice(0, 3);
@@ -367,10 +463,77 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-6 md:flex-row">
-                <div className="relative aspect-square w-full rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black md:w-[calc((100%-48px)/3)]">
+              <div className="relative aspect-square w-full overflow-hidden rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black md:w-[calc((100%-48px)/3)]">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Stack
                 </span>
+
+                <div className="flex min-h-6 w-full justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setIsStackModalOpen(true)}
+                    aria-label="Open full technology stack"
+                    className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-sm transition-colors hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-[#F3F3F3]"
+                  >
+                    <ExpandIcon expanded={false} />
+                  </button>
+                </div>
+
+                <div className="mt-10 flex h-[calc(100%-64px)] flex-col overflow-hidden">
+                  <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+                    <div>
+                      <h3 className="text-2xl font-semibold leading-none tracking-tight text-black">
+                        Full stack toolkit
+                      </h3>
+                      <p className="mt-2 max-w-[12rem] text-xs leading-5 text-black/60">
+                        The core tools I use to design, build, test, and deploy products.
+                      </p>
+                    </div>
+                    <div className="rounded-full bg-white px-3 py-2 text-right text-xs font-semibold text-black shadow-sm">
+                      <p>Preview</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 min-h-0 flex-1 overflow-y-auto pr-1">
+                    <div className="grid h-full gap-2">
+                      {stackCards.map((card) => {
+                        const visibleTools = card.tools.slice(0, 3);
+
+                        return (
+                          <article
+                            key={card.title}
+                            className="flex min-h-0 flex-col rounded-[18px] border border-black/10 bg-white p-3 shadow-sm"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="min-w-0">
+                                <h4 className="text-sm font-semibold leading-5 text-black">
+                                  {card.title}
+                                </h4>
+                                <p className="mt-0.5 text-[11px] leading-4 text-black/55">
+                                  {card.description}
+                                </p>
+                              </div>
+                              <span className="shrink-0 rounded-full bg-[#F3F3F3] px-2 py-1 text-[10px] font-semibold leading-none text-black/60">
+                                {card.tools.length}
+                              </span>
+                            </div>
+
+                            {/* <div className="mt-3 flex flex-wrap gap-1.5">
+                              {visibleTools.map((tool) => (
+                                <span
+                                  key={tool}
+                                  className="rounded-full bg-[#F3F3F3] px-2 py-1 text-[10px] font-medium leading-none text-black/70"
+                                >
+                                  {tool}
+                                </span>
+                              ))}
+                            </div> */}
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="relative flex min-h-[320px] flex-1 flex-col rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black md:min-h-full">
@@ -574,6 +737,79 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {isStackModalOpen ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="stack-modal-title"
+          onClick={() => setIsStackModalOpen(false)}
+        >
+          <div
+            className="flex max-h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px] bg-white text-black shadow-[0_24px_90px_rgba(0,0,0,0.35)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-6 border-b border-black/10 px-5 py-5 md:px-7">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-black/50">
+                  Technology Stack
+                </p>
+                <h2
+                  id="stack-modal-title"
+                  className="mt-2 text-2xl font-semibold tracking-tight text-black md:text-3xl"
+                >
+                  Full Stack Toolkit
+                </h2>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsStackModalOpen(false)}
+                className="inline-flex min-h-10 cursor-pointer items-center justify-center rounded-full bg-black px-4 text-sm font-semibold text-white transition-opacity hover:opacity-85 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="overflow-y-auto px-5 py-6 md:px-7">
+              <div className="grid gap-4 md:grid-cols-3">
+                {stackCards.map((card) => (
+                  <article
+                    key={card.title}
+                    className="rounded-[22px] border border-black/10 bg-[#F3F3F3] p-5"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="text-xl font-semibold tracking-tight text-black">
+                          {card.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-6 text-black/60">
+                          {card.description}
+                        </p>
+                      </div>
+                      <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black/60 shadow-sm">
+                        {card.tools.length}
+                      </span>
+                    </div>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {card.tools.map((tool) => (
+                        <span
+                          key={tool}
+                          className="rounded-full bg-white px-3 py-2 text-xs font-medium leading-none text-black/70 shadow-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {isExperienceModalOpen ? (
         <div
