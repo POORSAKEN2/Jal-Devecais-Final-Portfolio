@@ -28,6 +28,67 @@ const OpenInFullIcon = () => (
     />
   </svg>
 );
+
+const MusicArrowIcon = ({ direction }: { direction: "previous" | "next" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    className="text-current"
+  >
+    {direction === "previous" ? (
+      <path
+        d="M15 18l-6-6 6-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ) : (
+      <path
+        d="M9 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    )}
+  </svg>
+);
+
+const favoriteMusic = [
+  
+  {
+    title: "Pag-ibig ay Kanibalismo II ",
+    artist: "Fitterkarma",
+    image: "/images/kanibalismo.png",
+  },
+  {
+    title: "Kalapastangan",
+    artist: "Fitterkarma",
+    image: "/images/kalapastangan.jpg",
+  },
+  {
+    title: "Konsensya",
+    artist: "IV of Spades",
+    image: "/images/konsensya.jpeg",
+  },
+  {
+    title: "Golden Brown",
+    artist: "The Stranglers",
+    image: "/images/goldenbrown.jpg",
+  },
+];
+
+const musicArcSlots = [
+  "left-1/2 top-[52%] z-30 w-[45%] -translate-x-1/2 -translate-y-1/2 rotate-0 opacity-100",
+  "left-[68%] top-[43%] z-20 w-[37%] -translate-x-1/2 -translate-y-1/2 rotate-[14deg] opacity-95",
+  "left-1/2 top-[31%] z-10 w-[31%] -translate-x-1/2 -translate-y-1/2 rotate-0 opacity-80",
+  "left-[32%] top-[43%] z-20 w-[37%] -translate-x-1/2 -translate-y-1/2 -rotate-[14deg] opacity-95",
+];
 const workstreams = [
   {
     title: "Discovery",
@@ -138,7 +199,19 @@ const detailedExperiences = [
 export default function Home() {
   const [showMore, setShowMore] = useState(false);
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
+  const [activeMusicIndex, setActiveMusicIndex] = useState(0);
   const visibleWorks = showMore ? selectedWorks : selectedWorks.slice(0, 3);
+  const activeMusic = favoriteMusic[activeMusicIndex];
+
+  const showPreviousMusic = () => {
+    setActiveMusicIndex((current) =>
+      current === 0 ? favoriteMusic.length - 1 : current - 1,
+    );
+  };
+
+  const showNextMusic = () => {
+    setActiveMusicIndex((current) => (current + 1) % favoriteMusic.length);
+  };
 
   return (
     <main className="min-h-screen bg-white text-ink">
@@ -211,19 +284,82 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="space-y-6">
             <div className="grid gap-6 md:grid-cols-3">
-              <div className="relative aspect-square rounded-[28px] bg-[#F3F3F3] p-5 text-black shadow-[inset_0_0_0_6px_#FFFFFF]">
+              <div className="relative aspect-square overflow-hidden rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Favorite Music
                 </span>
+
+                <div className="absolute inset-x-5 bottom-5 top-16">
+                  <div className="absolute inset-x-3 top-4 h-32 rounded-[999px] border border-black/10 border-b-0" />
+
+                  {favoriteMusic.map((music, index) => {
+                    const slotIndex =
+                      (index - activeMusicIndex + favoriteMusic.length) %
+                      favoriteMusic.length;
+
+                    return (
+                      <article
+                        key={music.title}
+                        className={`absolute aspect-[4/5] overflow-hidden rounded-[18px] bg-white shadow-[0_18px_38px_rgba(0,0,0,0.18)] ring-1 ring-black/5 transition-all duration-300 ease-out ${musicArcSlots[slotIndex]}`}
+                        aria-hidden={slotIndex !== 0}
+                      >
+                        <Image
+                          src={music.image}
+                          alt={`${music.title} music cover`}
+                          width={360}
+                          height={450}
+                          className="h-full w-full object-cover"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 text-white">
+                          <h3 className="truncate text-sm font-semibold leading-5">
+                            {music.title}
+                          </h3>
+                          <p className="truncate text-[11px] leading-4 text-white/75">
+                            {music.artist}
+                          </p>
+                        </div>
+                      </article>
+                    );
+                  })}
+
+                  <div className="absolute inset-x-0 bottom-0 z-40 flex items-end justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={showPreviousMusic}
+                      aria-label="Show previous favorite music"
+                      className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-sm transition-colors hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-[#F3F3F3]"
+                    >
+                      <MusicArrowIcon direction="previous" />
+                    </button>
+
+                    <div className="min-w-0 flex-1 text-center">
+                      <p className="truncate text-sm font-semibold leading-5 text-black">
+                        {activeMusic.title}
+                      </p>
+                      <p className="truncate text-xs leading-5 text-black/60">
+                        {activeMusic.artist}
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={showNextMusic}
+                      aria-label="Show next favorite music"
+                      className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-sm transition-colors hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-[#F3F3F3]"
+                    >
+                      <MusicArrowIcon direction="next" />
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <div className="relative aspect-square rounded-[28px] bg-[#F3F3F3] p-5 text-black shadow-[inset_0_0_0_6px_#FFFFFF]">
+              <div className="relative aspect-square rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Socials
                 </span>
               </div>
 
-              <div className="relative aspect-square rounded-[28px] bg-[#F3F3F3] p-5 text-black shadow-[inset_0_0_0_6px_#FFFFFF]">
+              <div className="relative aspect-square rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Contact
                 </span>
@@ -231,13 +367,13 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-6 md:flex-row">
-              <div className="relative aspect-square w-full rounded-[28px] bg-[#F3F3F3] p-5 text-black shadow-[inset_0_0_0_6px_#FFFFFF] md:w-[calc((100%-48px)/3)]">
+                <div className="relative aspect-square w-full rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black md:w-[calc((100%-48px)/3)]">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Stack
                 </span>
               </div>
 
-              <div className="relative flex min-h-[320px] flex-1 flex-col rounded-[28px] bg-[#F3F3F3] p-5 text-black shadow-[inset_0_0_0_6px_#FFFFFF] md:min-h-full">
+              <div className="relative flex min-h-[320px] flex-1 flex-col rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black md:min-h-full">
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   My Experience
                 </span>
@@ -364,7 +500,7 @@ export default function Home() {
             {visibleWorks.map((work) => (
               <article
                 key={work.title}
-                className="flex min-h-[420px] flex-col overflow-hidden rounded-[28px] bg-[#F3F3F3] shadow-[inset_0_0_0_6px_#FFFFFF]"
+                className="flex min-h-[420px] flex-col overflow-hidden rounded-[28px] border-[6px] border-white bg-[#F3F3F3]"
               >
                 <div className="relative m-6 mb-0 aspect-[16/10] overflow-hidden rounded-[20px] bg-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]">
                   <Image
