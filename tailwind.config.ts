@@ -8,11 +8,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#161616",
-        paper: "#f7f5ef",
-        moss: "#51624f",
-        clay: "#b86345",
-        fog: "#d9ded6",
+        ink: "#0b0b0b",
+        paper: "#ffffff",
         carbon: "#262626"
       },
       fontFamily: {
