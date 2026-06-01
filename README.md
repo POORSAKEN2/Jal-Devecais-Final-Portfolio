@@ -19,20 +19,16 @@
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=nodejs" height="30" alt="nodejs logo" /></picture>
   <img width="12" />
- 
-  
   <picture><img src="https://skillicons.dev/icons?i=angular" height="30" alt="angularjs logo" /></picture>
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=androidstudio" height="30" alt="androidstudio logo" /></picture>
   <img width="12" />
   <picture><img src="https://cdn.simpleicons.org/apache/D22128" height="30" alt="apache logo" /></picture>
   <img width="12" />
-  
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg" height="30" alt="bitbucket logo" /></picture>
   <img width="12" />
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="30" alt="bootstrap logo" /></picture>
   <img width="12" />
-
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="30" alt="cplusplus logo" /></picture>
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=css" height="30" alt="css3 logo" /></picture>
@@ -49,26 +45,18 @@
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=gcp" height="30" alt="googlecloud logo" /></picture>
   <img width="12" />
-
    <picture><img src="https://skillicons.dev/icons?i=laravel" height="30" alt="laravel logo" /></picture>
   <img width="12" />
-
   <picture><img src="https://skillicons.dev/icons?i=react" height="30" alt="react native logo" /></picture>
   <img width="12" />
-
   <picture><img src="https://skillicons.dev/icons?i=dart" height="30" alt="dart logo" /></picture>
   <img width="12" />
-
   <picture><img src="https://skillicons.dev/icons?i=androidstudio" height="30" alt="android logo" /></picture>
   <img width="12" />
-
   <picture><img src="https://skillicons.dev/icons?i=kotlin" height="30" alt="kotlin logo" /></picture>
   <img width="12" />
-  
   <picture><img src="https://skillicons.dev/icons?i=html" height="30" alt="html5 logo" /></picture>
   <img width="12" />
-  
-
   <picture><img src="https://skillicons.dev/icons?i=mongodb" height="30" alt="mongodb logo" /></picture>
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=mysql" height="30" alt="mysql logo" /></picture>
@@ -79,14 +67,10 @@
   <img width="12" />
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" height="30" alt="pycharm logo" /></picture>
   <img width="12" />
- 
- 
- 
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" alt="vscode logo" /></picture>
   <img width="12" />
   <picture><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" height="30" alt="visualstudio logo" /></picture>
-  <img width="12" />
-  
+  <img width="12" />  
   <picture><img src="https://skillicons.dev/icons?i=ai" height="30" alt="adobeillustrator logo" /></picture>
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=ps" height="30" alt="adobephotoshop logo" /></picture>
@@ -99,12 +83,10 @@
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=postman" height="30" alt="postman logo" /></picture>
   <img width="12" />
- 
   <picture><img src="https://skillicons.dev/icons?i=tailwind" height="30" alt="tailwindcss logo" /></picture>
   <img width="12" />
   <picture><img src="https://skillicons.dev/icons?i=vercel" height="30" alt="vercel logo" /></picture>
   <img width="12" />
- 
 </div>
 
 
