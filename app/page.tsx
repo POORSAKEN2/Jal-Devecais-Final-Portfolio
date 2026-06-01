@@ -244,6 +244,9 @@ const stackCards = [
       "HTML",
       "CSS",
       "JavaScript",
+      "Dart",
+      "Kotlin",
+      "C++",
       "Figma",
       "Wireframing",
       "Prototyping",
@@ -263,6 +266,7 @@ const stackCards = [
       "MongoDB",
       "MySQL",
       "PostgreSQL",
+      "Supabase",
       "Studio 3T",
     ],
   },
@@ -279,6 +283,7 @@ const stackCards = [
       "Postman",
       "Chrome DevTools",
       "Expo Go",
+      "Android",
       "Android Studio",
       "Xcode",
       "Google Play Store",
@@ -1114,7 +1119,7 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="overflow-y-auto px-5 py-6 md:px-7">
+            <div className="experience-modal-scrollbar overflow-y-auto px-5 py-6 md:px-7">
               <div className="relative">
                 <span className="absolute bottom-8 left-[7px] top-3 w-px bg-black/15" />
 

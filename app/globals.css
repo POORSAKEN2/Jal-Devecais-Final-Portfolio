@@ -28,3 +28,28 @@ body {
 .section-pad {
   padding-inline: clamp(1rem, 4vw, 5rem);
 }
+
+.experience-modal-scrollbar {
+  scrollbar-color: #1f1f1f #e8e8e8;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.experience-modal-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.experience-modal-scrollbar::-webkit-scrollbar-track {
+  background: #e8e8e8;
+  border-radius: 999px;
+}
+
+.experience-modal-scrollbar::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border: 3px solid #e8e8e8;
+  border-radius: 999px;
+}
+
+.experience-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
