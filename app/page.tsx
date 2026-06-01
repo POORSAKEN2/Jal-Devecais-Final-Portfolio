@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type SocialIconProps = {
   className?: string;
@@ -127,6 +127,23 @@ const LinkedInIcon = ({ className = "size-5" }: SocialIconProps) => (
   </svg>
 );
 
+const ThumbsUpIcon = ({ className = "size-4" }: SocialIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="M7 10v12" />
+    <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+  </svg>
+);
+
 const MailIcon = ({ className = "size-5" }: SocialIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -235,59 +252,131 @@ const stackCards = [
   {
     title: "Interface",
     description: "Web, mobile, and product design.",
-    tools: [
-      "React.js",
-      "Tailwind CSS",
-      "React Native",
-      "Angular",
-      "Ionic",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Dart",
-      "Kotlin",
-      "C++",
-      "Figma",
-      "Wireframing",
-      "Prototyping",
-      "User Research",
+    groups: [
+      {
+        label: "Framework",
+        tools: [
+          { name: "Next.js", note: "React + SSR/SSG", rec: true },
+          { name: "Astro", note: "MPA / islands" },
+        ],
+      },
+      {
+        label: "Mobile",
+        tools: [
+          { name: "Kotlin", note: "Native Android", rec: true },
+          { name: "Android (Jetpack Compose)", note: "Modern Android UI", rec: true },
+          { name: "React Native", note: "Cross-platform", rec: true },
+          { name: "Flutter", note: "Cross-platform UI", rec: true },
+        ],
+      },
+      {
+        label: "State & Data",
+        tools: [
+          { name: "TanStack Query", note: "Server state", rec: true },
+        ],
+      },
+      {
+        label: "UI & Styling",
+        tools: [
+          { name: "Tailwind CSS", note: "Utility-first CSS", rec: true },
+          { name: "shadcn/ui", note: "Component library", rec: true },
+          { name: "Radix UI", note: "Headless primitives" },
+          { name: "Framer Motion", note: "Animation" },
+          { name: "CSS Modules", note: "Scoped styles" },
+        ],
+      },
+      {
+        label: "Type & Validation",
+        tools: [
+          { name: "TypeScript", note: "Static typing", rec: true },
+          { name: "Zod", note: "Schema validation", rec: true },
+          { name: "React Hook Form", note: "Form state + validation" },
+        ],
+      },
     ],
   },
   {
     title: "Server",
     description: "APIs, databases, and integrations.",
-    tools: [
-      "Node.js",
-      "Express.js",
-      "Laravel",
-      "RESTful APIs",
-      "Axios",
-      "HTTP",
-      "MongoDB",
-      "MySQL",
-      "PostgreSQL",
-      "Supabase",
-      "Studio 3T",
+    groups: [
+      {
+        label: "Runtime & Framework",
+        tools: [
+          { name: "Node.js + Fastify", note: "Stable, ecosystem-rich", rec: true },
+          { name: "Bun + Hono", note: "Edge-ready, fast" },
+          { name: "Python + FastAPI", note: "ML/data workloads" },
+          { name: "Go + Chi", note: "High performance" },
+          { name: "Rust + Axum", note: "Maximum performance" },
+        ],
+      },
+      {
+        label: "API Layer",
+        tools: [
+          { name: "GraphQL (Apollo / Pothos)", note: "Flexible graph API", rec: true },
+          { name: "REST + OpenAPI", note: "Standard HTTP API" },
+        ],
+      },
+      {
+        label: "Database & ORM",
+        tools: [
+          { name: "PostgreSQL", note: "Primary relational DB", rec: true },
+          { name: "Drizzle", note: "SQL-first ORM", rec: true },
+          { name: "Redis", note: "Cache / queues / pub-sub" },
+          { name: "SQLite (libSQL / Turso)", note: "Edge / embedded" },
+          { name: "MongoDB", note: "Document store" },
+        ],
+      },
+      {
+        label: "Auth",
+        tools: [
+          { name: "Auth.js v5", note: "next-auth, flexible", rec: true },
+          { name: "Lucia", note: "Lightweight, bring-your-own" },
+          { name: "Clerk", note: "Managed auth, fast setup" },
+          { name: "Better Auth", note: "Modern alternative" },
+        ],
+      },
     ],
   },
   {
     title: "Ship",
-    description: "Debugging, version control, and deploys.",
-    tools: [
-      "Git",
-      "GitHub",
-      "Bitbucket",
-      "Firebase",
-      "Vercel",
-      "Netlify",
-      "Postman",
-      "Chrome DevTools",
-      "Expo Go",
-      "Android",
-      "Android Studio",
-      "Xcode",
-      "Google Play Store",
-      "Apple App Store",
+    description: "Hosting, CI/CD, observability, and testing.",
+    groups: [
+      {
+        label: "Hosting & Edge",
+        tools: [
+          { name: "Vercel", note: "Frontend + edge functions", rec: true },
+          { name: "Cloudflare Workers", note: "Edge compute globally" },
+          { name: "AWS / GCP", note: "Infra-grade, full control" },
+        ],
+      },
+      {
+        label: "CI/CD & IaC",
+        tools: [
+          { name: "GitHub Actions", note: "CI/CD pipelines", rec: true },
+          { name: "Turborepo", note: "Monorepo build system" },
+          { name: "Pulumi", note: "IaC in TypeScript" },
+          { name: "Terraform", note: "IaC in HCL" },
+          { name: "Docker + Compose", note: "Containerization" },
+        ],
+      },
+      {
+        label: "Observability",
+        tools: [
+          { name: "Sentry", note: "Errors + performance", rec: true },
+          { name: "Axiom", note: "Structured logging" },
+          { name: "Grafana + Prometheus", note: "Open-source metrics" },
+          { name: "Datadog", note: "Enterprise observability" },
+        ],
+      },
+      {
+        label: "Testing",
+        tools: [
+          { name: "Vitest", note: "Unit + integration tests", rec: true },
+          { name: "Playwright", note: "End-to-end tests", rec: true },
+          { name: "MSW", note: "API mocking" },
+          { name: "Storybook", note: "Component dev + visual tests" },
+        ],
+      },
     ],
   },
 ];
@@ -398,6 +487,17 @@ export default function Home() {
   const [isStackModalOpen, setIsStackModalOpen] = useState(false);
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
   const [activeMusicIndex, setActiveMusicIndex] = useState(0);
+
+  useEffect(() => {
+    const lock = isStackModalOpen || isExperienceModalOpen;
+    if (!lock) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isStackModalOpen, isExperienceModalOpen]);
+
   const visibleWorks = showMore ? selectedWorks : selectedWorks.slice(0, 3);
   const activeMusic = favoriteMusic[activeMusicIndex];
 
@@ -732,7 +832,7 @@ export default function Home() {
                                 </p>
                               </div>
                               <span className="shrink-0 rounded-full bg-[#F3F3F3] px-2 py-1 text-[10px] font-semibold leading-none text-black/60">
-                                {card.tools.length}
+                                {card.groups.reduce((sum, group) => sum + group.tools.length, 0)}
                               </span>
                             </div>
 
@@ -1021,7 +1121,7 @@ export default function Home() {
           onClick={() => setIsStackModalOpen(false)}
         >
           <div
-            className="flex max-h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px] bg-white text-black shadow-[0_24px_90px_rgba(0,0,0,0.35)]"
+            className="flex max-h-[88vh] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] bg-white text-black shadow-[0_24px_90px_rgba(0,0,0,0.35)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-6 border-b border-black/10 px-5 py-5 md:px-7">
@@ -1046,7 +1146,10 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="overflow-y-auto px-5 py-6 md:px-7">
+            <div
+              data-lenis-prevent
+              className="overscroll-contain overflow-y-auto px-5 py-6 md:px-7"
+            >
               <div className="grid gap-4 md:grid-cols-3">
                 {stackCards.map((card) => (
                   <article
@@ -1063,18 +1166,43 @@ export default function Home() {
                         </p>
                       </div>
                       <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black/60 shadow-sm">
-                        {card.tools.length}
+                        {card.groups.reduce((sum, group) => sum + group.tools.length, 0)}
                       </span>
                     </div>
 
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {card.tools.map((tool) => (
-                        <span
-                          key={tool}
-                          className="rounded-full bg-white px-3 py-2 text-xs font-medium leading-none text-black/70 shadow-sm"
-                        >
-                          {tool}
-                        </span>
+                    <div className="mt-5 flex flex-col gap-5">
+                      {card.groups.map((group) => (
+                        <div key={group.label}>
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-black/40">
+                            {group.label}
+                          </p>
+                          <div className="mt-2 flex flex-col gap-1.5">
+                            {group.tools.map((tool) => (
+                              <div
+                                key={tool.name}
+                                className={`flex items-center justify-between gap-3 rounded-[14px] px-3 py-2 shadow-sm ${
+                                  tool.rec ? "bg-black text-white" : "bg-white text-black"
+                                }`}
+                              >
+                                <div className="min-w-0">
+                                  <p className="text-xs font-semibold leading-4">
+                                    {tool.name}
+                                  </p>
+                                  <p
+                                    className={`mt-0.5 text-[11px] leading-4 ${
+                                      tool.rec ? "text-white/60" : "text-black/50"
+                                    }`}
+                                  >
+                                    {tool.note}
+                                  </p>
+                                </div>
+                                {tool.rec ? (
+                                  <ThumbsUpIcon className="size-4 shrink-0 text-white" />
+                                ) : null}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </article>
@@ -1119,7 +1247,10 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="experience-modal-scrollbar overflow-y-auto px-5 py-6 md:px-7">
+            <div
+              data-lenis-prevent
+              className="experience-modal-scrollbar overscroll-contain overflow-y-auto px-5 py-6 md:px-7"
+            >
               <div className="relative">
                 <span className="absolute bottom-8 left-[7px] top-3 w-px bg-black/15" />
 
