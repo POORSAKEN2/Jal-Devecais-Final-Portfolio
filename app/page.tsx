@@ -127,6 +127,49 @@ const LinkedInIcon = ({ className = "size-5" }: SocialIconProps) => (
   </svg>
 );
 
+const MailIcon = ({ className = "size-5" }: SocialIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    className={className}
+  >
+    <path
+      d="M4.75 6.75h14.5v10.5H4.75V6.75Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="m5.25 7.25 6.75 5.4 6.75-5.4"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const PhoneIcon = ({ className = "size-5" }: SocialIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    className={className}
+  >
+    <path
+      d="M8.38 5.5 9.7 8.48a1.5 1.5 0 0 1-.36 1.7l-.9.86a9.06 9.06 0 0 0 4.52 4.52l.86-.9a1.5 1.5 0 0 1 1.7-.36l2.98 1.32a1.5 1.5 0 0 1 .88 1.6l-.3 1.94a1.5 1.5 0 0 1-1.48 1.27A15.5 15.5 0 0 1 3.57 5.9a1.5 1.5 0 0 1 1.27-1.48l1.94-.3a1.5 1.5 0 0 1 1.6.88Z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const favoriteMusic = [
   
   {
@@ -157,49 +200,34 @@ const musicArcSlots = [
   "left-1/2 top-[31%] z-10 w-[31%] -translate-x-1/2 -translate-y-1/2 rotate-0 opacity-80",
   "left-[32%] top-[43%] z-20 w-[37%] -translate-x-1/2 -translate-y-1/2 -rotate-[14deg] opacity-95",
 ];
-const workstreams = [
-  {
-    title: "Discovery",
-    copy: "Clarify the offer, audience, and page architecture before the interface gets dressed."
-  },
-  {
-    title: "Build",
-    copy: "Ship responsive Next.js and Tailwind interfaces with clean components and practical motion."
-  },
-  {
-    title: "Refine",
-    copy: "Tighten spacing, hierarchy, accessibility, and conversion details until the page feels ready."
-  }
-];
-
 const selectedWorks = [
   {
     title: "Wise Buddy",
     description:
       "A mobile budgeting app with receipt scanning, spending insights, budget limits, and split-bill sharing.",
     tag: "Mobile App",
-    image: "/images/work-wise-buddy.svg",
+    image: "/images/wisebuddy.jpg",
   },
   {
-    title: "R.E.M.",
+    title: "Real Estate Management",
     description:
       "A real estate management platform for tracking properties, tenants, leases, expenses, documents, and analytics.",
     tag: "Business System",
-    image: "/images/work-rem.svg",
+    image: "/images/rem.jpeg",
   },
   {
     title: "EcoTagger",
     description:
       "A sustainability-focused tagging platform for organizing eco data, product details, and environmental insights.",
     tag: "Eco Platform",
-    image: "/images/work-ecotagger.svg",
+    image: "/images/ecotagger.png",
   },
   {
-    title: "Bioflyt Mobile App",
+    title: "YouLink Earn",
     description:
-      "A mobile app experience for Bioflyt with clear user flows, responsive screens, and practical product features.",
+      "Youlink.Store offers part-time or full-time content creators, endorsers, live sellers, and students to earn extra income through commissions.",
     tag: "Mobile App",
-    image: "/images/work-bioflyt.svg",
+    image: "/images/youlinkearn.webp",
   },
 ];
 
@@ -272,6 +300,31 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/jal-devecais/",
     Icon: LinkedInIcon,
   },
+];
+
+const contactLinks = [
+  {
+    label: "Email",
+    value: "jaldevecais2@gmail.com",
+    href: "mailto:jaldevecais2@gmail.com",
+    Icon: MailIcon,
+  },
+  {
+    label: "Phone",
+    value: "09922472512",
+    href: "tel:+639922472512",
+    Icon: PhoneIcon,
+  },
+];
+
+const gmailComposeHref =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=jaldevecais2@gmail.com";
+
+const footerNavLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About Me", href: "#about-me" },
+  { label: "My Works", href: "#selected-work" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const detailedExperiences = [
@@ -362,19 +415,21 @@ export default function Home() {
             Jal Devecais
           </a>
           <nav className="hidden items-center gap-6 text-sm text-black/70 md:flex">
-            <a className="transition-colors hover:text-black" href="#services">
-              Services
-            </a>
-            <a className="transition-colors hover:text-black" href="#process">
-              Process
-            </a>
-            <a className="transition-colors hover:text-black" href="#contact">
-              Contact
-            </a>
+            {footerNavLinks.map((link) => (
+              <a
+                key={link.label}
+                className="transition-colors hover:text-black"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
           <a
             className="inline-flex min-h-10 cursor-pointer items-center justify-center bg-black px-4 text-sm font-medium text-white transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white"
-            href="mailto:hello@example.com"
+            href={gmailComposeHref}
+            target="_blank"
+            rel="noreferrer"
           >
             Start a project
           </a>
@@ -411,9 +466,9 @@ export default function Home() {
 
               <a
                 className="inline-flex min-h-12 cursor-pointer items-center justify-center border border-black/20 bg-white/70 px-6 text-sm font-semibold text-black transition-colors hover:border-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white"
-                href="#services"
+                href="#selected-work"
               >
-                View services
+                View my work
               </a>
             </div>
           </div>
@@ -421,7 +476,7 @@ export default function Home() {
       </section>
 
       <section id="grid-section" className="section-pad bg-[#f5f5f7] py-20">
-        <div className="mx-auto max-w-7xl px-4">
+        <div id="about-me" className="mx-auto max-w-7xl scroll-mt-28 px-4">
           <div className="space-y-6">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="relative aspect-square overflow-hidden rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
@@ -540,10 +595,87 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative aspect-square rounded-[28px] border-[6px] border-white bg-[#F3F3F3] p-5 text-black">
+              <div className="relative min-h-[420px] overflow-hidden rounded-[28px] border-[6px] border-white p-5 text-white shadow-[0_24px_70px_rgba(0,0,0,0.24)] xl:aspect-square xl:min-h-0">
+                <div className="absolute -right-16 top-16 h-36 w-36 rounded-full border border-white/10" />
+                {/* <div className="absolute -bottom-20 left-8 h-44 w-44 rounded-full border border-[#2563EB]/35" /> */}
+                <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(37,99,235,0.28),transparent_58%)]" />
+
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Contact
                 </span>
+
+                <div className="relative flex h-full flex-col justify-between pt-14">
+                  <div>
+                    <div className="mb-6 flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/55">
+                          Available for work
+                        </p>
+                        <h3 className="mt-3 max-w-[15rem] text-4xl font-semibold leading-[0.95] tracking-tight text-black">
+                          Let&apos;s make your idea feel real.
+                        </h3>
+                      </div>
+                      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-[0_16px_34px_rgba(37,99,235,0.38)]">
+                        <MailIcon />
+                      </span>
+                    </div>
+
+                  </div>
+
+                  <div>
+                  
+
+                    <div className="grid gap-2.5">
+                      {contactLinks.map(({ label, value, href, Icon }, index) => (
+                        <a
+                          key={label}
+                          href={href}
+                          aria-label={`${label}: ${value}`}
+                          className={`group flex min-h-[62px] cursor-pointer items-center justify-between gap-3 rounded-[18px] px-4 py-3 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black ${
+                            index === 0
+                              ? "bg-[#2563EB] text-white hover:bg-white hover:text-black"
+                              : "border border-white/14 bg-white/[0.08] text-black hover:border-white hover:bg-white hover:text-black"
+                          }`}
+                        >
+                          <span className="flex min-w-0 items-center gap-3">
+                            <span
+                              className={`flex size-10 shrink-0 items-center justify-center rounded-full transition-colors duration-200 ${
+                                index === 0
+                                  ? "bg-white text-[#2563EB] group-hover:bg-black group-hover:text-white"
+                                  : "bg-black/10 text-white group-hover:bg-white group-hover:text-black"
+                              }`}
+                            >
+                              <Icon />
+                            </span>
+                            <span className="min-w-0">
+                              <span
+                                className={`block text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ${
+                                  index === 0
+                                    ? "text-white/70 group-hover:text-black/45"
+                                    : "text-black/45 group-hover:text-black/45"
+                                }`}
+                              >
+                                {label}
+                              </span>
+                              <span className="block truncate text-sm font-semibold leading-5">
+                                {value}
+                              </span>
+                            </span>
+                          </span>
+                          <span
+                            className={`flex size-8 shrink-0 items-center justify-center rounded-full transition-colors duration-200 ${
+                              index === 0
+                                ? "bg-white/[0.16] text-white group-hover:bg-black group-hover:text-white"
+                                : "bg-white text-black group-hover:bg-black group-hover:text-white"
+                            }`}
+                          >
+                            <OpenInFullIcon />
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -786,40 +918,96 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="process" className="section-pad bg-black py-20 text-white md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">Process</p>
-            <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">Simple, structured, and built for momentum.</h2>
-          </div>
-          <div className="grid gap-4">
-            {workstreams.map((item, index) => (
-              <article key={item.title} className="grid gap-4 border border-white/14 bg-white/10 p-5 backdrop-blur sm:grid-cols-[4rem_1fr]">
-                <span className="text-2xl font-semibold text-white">0{index + 1}</span>
-                <div>
-                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 leading-7 text-white/70">{item.copy}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <footer
+        id="contact"
+        className="section-pad bg-black py-16 text-white md:py-20"
+      >
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="border-t border-white/15 pt-10">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/50">
+                  Contact
+                </p>
+                <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+                  Have an idea worth building?
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-7 text-white/62">
+                  I build clean websites, mobile apps, and business systems with
+                  practical UI and reliable implementation.
+                </p>
 
-      <section id="contact" className="section-pad bg-black py-20 text-white md:py-28">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Contact</p>
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">Let&apos;s turn your portfolio into a clear product story.</h2>
+                <a
+                  href={gmailComposeHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex min-h-12 cursor-pointer items-center justify-center bg-white px-6 text-sm font-semibold text-black transition-colors duration-200 hover:bg-[#2563EB] hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                >
+                  Start a project
+                </a>
+              </div>
+
+              <div className="grid gap-8 sm:grid-cols-2 lg:justify-self-end">
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">
+                    Navigate
+                  </h3>
+                  <nav
+                    className="mt-4 grid gap-3 text-sm text-white/72"
+                    aria-label="Footer navigation"
+                  >
+                    {footerNavLinks.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        className="w-fit cursor-pointer transition-colors duration-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/40">
+                    Connect
+                  </h3>
+                  <div className="mt-4 grid gap-3 text-sm text-white/72">
+                    <a
+                      href="mailto:jaldevecais2@gmail.com"
+                      className="w-fit cursor-pointer transition-colors duration-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                    >
+                      jaldevecais2@gmail.com
+                    </a>
+                    <a
+                      href="tel:+639922472512"
+                      className="w-fit cursor-pointer transition-colors duration-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                    >
+                      09922472512
+                    </a>
+                    {socialLinks.map(({ label, href }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-fit cursor-pointer transition-colors duration-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                      >
+                        {label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-col gap-4 border-t border-white/15 pt-6 text-sm text-white/42 sm:flex-row sm:items-center sm:justify-between">
+              <p>Jal Devecais</p>
+              <p>Bacolod City, Philippines</p>
+            </div>
           </div>
-          <a
-            className="inline-flex min-h-12 w-fit cursor-pointer items-center justify-center bg-white px-6 text-sm font-semibold text-black transition-colors hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-            href="mailto:hello@example.com"
-          >
-            hello@example.com
-          </a>
         </div>
-      </section>
+      </footer>
 
       {isStackModalOpen ? (
         <div
