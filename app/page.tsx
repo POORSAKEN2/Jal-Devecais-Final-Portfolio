@@ -595,10 +595,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative min-h-[420px] overflow-hidden rounded-[28px] border-[6px] border-white p-5 text-white shadow-[0_24px_70px_rgba(0,0,0,0.24)] xl:aspect-square xl:min-h-0">
-                <div className="absolute -right-16 top-16 h-36 w-36 rounded-full border border-white/10" />
+              <div className="relative min-h-[420px] overflow-hidden rounded-[28px] border-[6px] border-white p-5 text-white  xl:aspect-square xl:min-h-0">
+                {/* <div className="absolute -right-16 top-16 h-36 w-36 rounded-full border border-white/10" /> */}
                 {/* <div className="absolute -bottom-20 left-8 h-44 w-44 rounded-full border border-[#2563EB]/35" /> */}
-                <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(37,99,235,0.28),transparent_58%)]" />
+                {/* <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(37,99,235,0.28),transparent_58%)]" /> */}
 
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black shadow-sm">
                   Contact
@@ -615,9 +615,7 @@ export default function Home() {
                           Let&apos;s make your idea feel real.
                         </h3>
                       </div>
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#2563EB] text-white shadow-[0_16px_34px_rgba(37,99,235,0.38)]">
-                        <MailIcon />
-                      </span>
+                     
                     </div>
 
                   </div>
