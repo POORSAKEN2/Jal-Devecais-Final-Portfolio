@@ -385,13 +385,13 @@ const socialLinks = [
   {
     label: "GitHub",
     handle: "@Jal-Devecais",
-    href: "https://github.com/Jal-Devecais",
+    href: "https://github.com/POORSAKEN2",
     Icon: GitHubIcon,
   },
   {
     label: "LinkedIn",
     handle: "Jal Devecais",
-    href: "https://www.linkedin.com/in/jal-devecais/",
+    href: "https://www.linkedin.com/in/jal-devecais-0709222b6/",
     Icon: LinkedInIcon,
   },
 ];
