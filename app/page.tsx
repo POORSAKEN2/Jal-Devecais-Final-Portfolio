@@ -246,6 +246,13 @@ const selectedWorks = [
     tag: "Mobile App",
     image: "/images/youlinkearn.webp",
   },
+  {
+    title: "Pulse",
+    description:
+      " Pulse is an anonymous, location-based stranger-chat app.",
+    tag: "Web Application",
+    image: "/images/pulse.png",
+  },
 ];
 
 const stackCards = [
@@ -424,7 +431,7 @@ const footerNavLinks = [
 const detailedExperiences = [
   {
     role: "Software Developer",
-    date: "March 2026 - Present",
+    date: "Feb 2026 - Jul 2026",
     company: "RazeTech",
     location: "Bacolod City",
     details: [
@@ -449,8 +456,8 @@ const detailedExperiences = [
     ],
   },
   {
-    role: "Freelance Software Developer",
-    date: "Jan 2025 - July 2025",
+    role: "Software Developer",
+    date: "Jan 2025 - Jul 2025",
     company: "BioFlyt Agriventures",
     location: "Bacolod City",
     details: [
@@ -872,7 +879,7 @@ export default function Home() {
                           Software Developer
                         </p>
                         <p className="shrink-0 text-right text-[10px] leading-4 text-black/70">
-                          Mar 2026 - Present
+                          Feb 2026 - July 2026
                         </p>
                       </div>
                       <p className="text-[11px] leading-4 text-black/70">
@@ -900,7 +907,7 @@ export default function Home() {
                       <span className="absolute left-0 top-1.5 z-10 size-3 rounded-full bg-black " />
                       <div className="flex min-w-0 items-start justify-between gap-3">
                         <p className="min-w-0 text-xs font-semibold leading-4 text-black">
-                          Freelance Software Developer
+                          Software Developer
                         </p>
                         <p className="shrink-0 text-right text-[10px] leading-4 text-black/70">
                           Jan 2025 - Jul 2025
