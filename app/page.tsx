@@ -224,6 +224,7 @@ const selectedWorks = [
       "A mobile budgeting app with receipt scanning, spending insights, budget limits, and split-bill sharing.",
     tag: "Mobile App",
     image: "/images/wisebuddy.jpg",
+    techStack: ["React Native", "NativeWind", "OCR Kit", "Laravel", "MariaDB"],
   },
   {
     title: "Real Estate Management",
@@ -231,6 +232,7 @@ const selectedWorks = [
       "A real estate management platform for tracking properties, tenants, leases, expenses, documents, and analytics.",
     tag: "Business System",
     image: "/images/rem.jpeg",
+    techStack: ["React Native", "Laravel", "NativeWind", "PostgreSQL"],
   },
   {
     title: "EcoTagger",
@@ -238,6 +240,7 @@ const selectedWorks = [
       "A sustainability-focused tagging platform for organizing eco data, product details, and environmental insights.",
     tag: "Eco Platform",
     image: "/images/ecotagger.png",
+    techStack: ["React Native", "Node.js + Express", "CSS"],
   },
   {
     title: "YouLink Earn",
@@ -245,6 +248,7 @@ const selectedWorks = [
       "Youlink.Store offers part-time or full-time content creators, endorsers, live sellers, and students to earn extra income through commissions.",
     tag: "Mobile App",
     image: "/images/youlinkearn.webp",
+    techStack: ["Ionic Cordova", "Angular", "CSS", "MongoDB + Express.js"],
   },
   {
     title: "Pulse",
@@ -252,6 +256,7 @@ const selectedWorks = [
       " Pulse is an anonymous, location-based stranger-chat app.",
     tag: "Web Application",
     image: "/images/pulse.png",
+    techStack: ["Next.js", "Prisma", "PostgreSQL"],
   },
 ];
 
@@ -1003,14 +1008,25 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col justify-end p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-2xl font-semibold text-black">
                     {work.title}
                   </h3>
 
-                  <p className="mt-3 min-h-[72px] text-sm leading-6 text-black/65">
+                  <p className="mt-3 text-sm leading-6 text-black/65">
                     {work.description}
                   </p>
+
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-5">
+                    {work.techStack.map((tech) => (
+                      <li
+                        key={tech}
+                        className="rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold tracking-[0.04em] text-black/70 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.08)]"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
