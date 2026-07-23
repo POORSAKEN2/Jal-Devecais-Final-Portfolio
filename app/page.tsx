@@ -232,7 +232,7 @@ const selectedWorks = [
       "A real estate management platform for tracking properties, tenants, leases, expenses, documents, and analytics.",
     tag: "Business System",
     image: "/images/rem.jpeg",
-    techStack: ["React Native", "Laravel", "NativeWind", "PostgreSQL"],
+    techStack: ["React Native", "Laravel", "NativeWind", "PostgreSQL", "NextJS", "TailwindCSS"],
   },
   {
     title: "EcoTagger",
