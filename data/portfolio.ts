@@ -7,7 +7,7 @@ export const profile = {
   email: "jaldevecais2@gmail.com",
   phoneDisplay: "09922472512",
   phoneHref: "tel:+639922472512",
-  resumeHref: "/resume.pdf",
+  resumeHref: "/Jal_Devecais_Resume.pdf",
   github: { handle: "POORSAKEN2", href: "https://github.com/POORSAKEN2" },
   linkedin: {
     handle: "Jal Devecais",
