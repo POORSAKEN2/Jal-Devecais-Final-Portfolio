@@ -13,8 +13,7 @@ const config: Config = {
         carbon: "#262626"
       },
       fontFamily: {
-        sans: ["Inter", "Aptos", "Arial", "sans-serif"],
-        serif: ["Cormorant Garamond", "Georgia", "serif"]
+        sans: ["Tahoma", "Segoe UI", "Verdana", "DejaVu Sans", "sans-serif"],
       },
       boxShadow: {
         soft: "0 22px 70px rgba(22, 22, 22, 0.12)"

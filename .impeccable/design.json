@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T19:30:00+08:00",
+  "title": "Design System: Jal Devecais XP",
+  "extensions": {
+    "colorMeta": {
+      "luna-blue": { "role": "primary", "displayName": "Luna Royal Blue", "canonical": "#0058ee", "tonalRamp": ["#001a4d", "#002b80", "#003db3", "#0058ee", "#3a7ef2", "#73a3f6", "#adc8fa", "#e3edfd"] },
+      "luna-idle": { "role": "primary", "displayName": "Idle Periwinkle", "canonical": "#7a96df", "tonalRamp": ["#1e2a4a", "#33467a", "#4b64a8", "#7a96df", "#95ace6", "#b1c2ed", "#cdd8f4", "#e9eefa"] },
+      "start-green": { "role": "secondary", "displayName": "Start Green", "canonical": "#47a547", "tonalRamp": ["#123012", "#1f521f", "#2f7a2f", "#47a547", "#6ebd6e", "#96d196", "#bfe4bf", "#e6f5e6"] },
+      "luna-orange": { "role": "secondary", "displayName": "Luna Orange", "canonical": "#f6a54b", "tonalRamp": ["#4a2a06", "#7a460c", "#b06612", "#e68b2c", "#f6a54b", "#f9c287", "#fcdcb8", "#fef3e6"] },
+      "close-red": { "role": "tertiary", "displayName": "Close Ember", "canonical": "#dc6527", "tonalRamp": ["#3d1a08", "#6b2d0e", "#a04416", "#dc6527", "#e5875a", "#eda88a", "#f5cab8", "#fbebe4"] },
+      "dialog-beige": { "role": "neutral", "displayName": "Dialog Beige", "canonical": "#ece9d8", "tonalRamp": ["#3b3a33", "#5f5d51", "#8a8770", "#b9b49c", "#d8d2bd", "#ece9d8", "#f4f2e8", "#fbfaf5"] },
+      "selection-blue": { "role": "neutral", "displayName": "Selection Blue", "canonical": "#316ac5", "tonalRamp": ["#0d1d38", "#173262", "#20498e", "#316ac5", "#5a8ad3", "#86abe0", "#b3cbee", "#e1eaf9"] },
+      "link-blue": { "role": "neutral", "displayName": "Link Blue", "canonical": "#1a4fb3", "tonalRamp": ["#08183a", "#0f2d66", "#153f8f", "#1a4fb3", "#4a75c6", "#7d9ed8", "#b2c6ea", "#e3eaf8"] },
+      "balloon-cream": { "role": "tertiary", "displayName": "Balloon Cream", "canonical": "#ffffe1" },
+      "amp-chrome": { "role": "neutral", "displayName": "JalAmp Gunmetal", "canonical": "#2b2c3e" },
+      "amp-lcd-green": { "role": "secondary", "displayName": "LCD Green", "canonical": "#00e000" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name in the Welcome band and the boot wordmark only." },
+      "headline": { "displayName": "Headline", "purpose": "Pick-a-task section voices in deep blue Trebuchet." },
+      "title": { "displayName": "Title bar", "purpose": "Window titles; navy text shadow when active." },
+      "body": { "displayName": "Body", "purpose": "Anything a recruiter reads to decide: summaries, descriptions, bullets." },
+      "label": { "displayName": "Label", "purpose": "Menus, address and status bars, buttons, legends, taskbar." },
+      "mono": { "displayName": "Mono", "purpose": "Notepad text and the JalAmp LCD only." }
+    },
+    "shadows": [
+      { "name": "window-active", "value": "0 0 0 1px #00138c, 0 14px 34px rgba(0,20,60,.38), 0 3px 8px rgba(0,20,60,.25)", "purpose": "The focused window." },
+      { "name": "window-inactive", "value": "0 0 0 1px #5a74c4, 0 8px 22px rgba(0,20,60,.22)", "purpose": "Background windows." },
+      { "name": "popup", "value": "4px 4px 14px rgba(0,0,0,.45)", "purpose": "Start menu." },
+      { "name": "balloon", "value": "2px 5px 12px rgba(0,0,0,.3)", "purpose": "Tray balloon tips." }
+    ],
+    "motion": [
+      { "name": "window-open", "value": "160ms cubic-bezier(0.16, 1, 0.3, 1), scale .965 to 1 with fade", "purpose": "Windows, message boxes and dialogs appearing." },
+      { "name": "start-in", "value": "150ms cubic-bezier(0.16, 1, 0.3, 1), rise 12px", "purpose": "Start menu opening." },
+      { "name": "shutdown-veil", "value": "600ms ease-out grayscale backdrop", "purpose": "Desktop drains to grayscale behind the Turn Off dialog." },
+      { "name": "boot", "value": "2.6s boot bar then 1.4s welcome; once per session; skipped under reduced motion", "purpose": "The log-on ritual." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "767px", "purpose": "At and below: windows open maximized, 40px taskbar, 4-column icon grid." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Push Button",
+      "kind": "button",
+      "refersTo": "button-push",
+      "description": "The Luna push button for every dialog action.",
+      "html": "<button class=\"ds-btn\">OK</button>",
+      "css": ".ds-btn { min-width: 75px; min-height: 25px; padding: 0 12px; border: 1px solid #003c74; border-radius: 3px; background: linear-gradient(180deg, #fff 0%, #ecebe6 86%, #d6d0c5 100%); color: #000; font: 12px Tahoma, 'Segoe UI', Verdana, sans-serif; cursor: pointer; } .ds-btn:hover { box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a; } .ds-btn:focus-visible { outline: 1px dotted #000; outline-offset: -5px; box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4; } .ds-btn:active { background: linear-gradient(180deg, #cdcac3 0%, #e3e3db 8%, #e5e5de 94%, #f2f2f1 100%); box-shadow: none; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square steel-blue bordered field.",
+      "html": "<input class=\"ds-input\" placeholder=\"Interview request\" />",
+      "css": ".ds-input { min-height: 24px; padding: 3px 6px; border: 1px solid #7f9db9; border-radius: 0; background: #fff; color: #000; font: 13px Tahoma, 'Segoe UI', Verdana, sans-serif; } .ds-input::placeholder { color: #6b6b6b; } .ds-input:focus-visible { outline: none; border-color: #316ac5; box-shadow: 0 0 0 1px rgba(49,106,197,.35); }"
+    },
+    {
+      "name": "Window",
+      "kind": "custom",
+      "refersTo": "window-titlebar",
+      "description": "Luna window: blue title bar, beige body.",
+      "html": "<section class=\"ds-win\"><div class=\"ds-win-bar\"><span>My Projects</span><button class=\"ds-win-x\" aria-label=\"Close\"><svg viewBox=\"0 0 13 13\" width=\"13\" height=\"13\"><path d=\"m2.5 2.5 8 8m0-8-8 8\" stroke=\"#fff\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg></button></div><div class=\"ds-win-body\">Window content</div></section>",
+      "css": ".ds-win { width: 300px; padding: 0 3px 3px; border-radius: 8px 8px 0 0; background: #0058ee; box-shadow: 0 0 0 1px #00138c, 0 14px 34px rgba(0,20,60,.38); } .ds-win-bar { display: flex; height: 30px; align-items: center; justify-content: space-between; margin: 0 -3px; padding: 0 5px 0 8px; border-radius: 7px 7px 0 0; background: linear-gradient(180deg, #0997ff 0%, #0053ee 8%, #0050ee 40%, #0066ff 88%, #003dd7 100%); color: #fff; font: 700 13px 'Trebuchet MS', Tahoma, sans-serif; text-shadow: 1px 1px #0f1089; } .ds-win-x { display: grid; width: 21px; height: 21px; place-items: center; border: 1px solid #fff; border-radius: 3px; background: radial-gradient(circle at 90% 90%, #cc4600 0%, #dc6527 55%, #cd7546 70%, #ffccb2 90%, #fff 100%); cursor: pointer; } .ds-win-x:hover { filter: brightness(1.15); } .ds-win-body { padding: 16px; background: #ece9d8; font: 13px Tahoma, sans-serif; }"
+    },
+    {
+      "name": "Start Button",
+      "kind": "nav",
+      "refersTo": "start-button",
+      "description": "Green Start button that opens the Start menu.",
+      "html": "<button class=\"ds-start\">start</button>",
+      "css": ".ds-start { height: 30px; padding: 0 20px 0 12px; border: 0; border-radius: 0 12px 12px 0; background: radial-gradient(ellipse 120% 90% at 50% 0%, #79cc69 0%, #47a547 45%, #2f8a2f 100%); box-shadow: inset -2px -2px 4px rgba(0,0,0,.25), inset 2px 2px 4px rgba(255,255,255,.35); color: #fff; font: italic 700 19px 'Trebuchet MS', Tahoma, sans-serif; text-shadow: 1px 1px 2px rgba(0,0,0,.6); cursor: pointer; } .ds-start:hover { filter: brightness(1.08); } .ds-start:focus-visible { outline: 1px dotted #fff; outline-offset: -4px; }"
+    },
+    {
+      "name": "Task Pane Panel",
+      "kind": "card",
+      "refersTo": "task-pane-panel",
+      "description": "Explorer side panel with link-blue actions.",
+      "html": "<div class=\"ds-pane\"><div class=\"ds-pane-h\">Hiring tasks</div><div class=\"ds-pane-b\"><a href=\"#\">Open my resume</a><a href=\"#\">Email me about a role</a></div></div>",
+      "css": ".ds-pane { width: 190px; padding: 12px 10px; background: linear-gradient(180deg, #7ba2e7, #6375d6); } .ds-pane-h { padding: 6px 10px; border-radius: 3px 3px 0 0; background: linear-gradient(90deg, #fff, #c6d3f7); color: #215dc6; font: 700 12px Tahoma, sans-serif; } .ds-pane-b { display: flex; flex-direction: column; gap: 7px; padding: 9px 10px 11px; border: 1px solid #fff; border-top: 0; background: #d6dff7; } .ds-pane-b a { color: #1a4fb3; font: 12px Tahoma, sans-serif; text-decoration: none; } .ds-pane-b a:hover { text-decoration: underline; } .ds-pane-b a:focus-visible { outline: 1px dotted #000; }"
+    },
+    {
+      "name": "List Row",
+      "kind": "custom",
+      "refersTo": "list-row-selected",
+      "description": "Details-view row; selection blue when chosen.",
+      "html": "<div><button class=\"ds-row\" aria-selected=\"true\"><b>Software Developer</b><span>Feb 2026 – Jul 2026</span></button><button class=\"ds-row\"><b>Graphic Artist</b><span>Oct 2024 – Jan 2025</span></button></div>",
+      "css": ".ds-row { display: flex; width: 280px; justify-content: space-between; gap: 8px; padding: 7px 8px; border: 0; border-bottom: 1px solid #f0efe8; background: #fff; font: 12px Tahoma, sans-serif; text-align: left; cursor: pointer; } .ds-row:hover { background: #eef3fc; } .ds-row[aria-selected=true] { background: #316ac5; color: #fff; } .ds-row:focus-visible { outline: 1px dotted currentColor; outline-offset: -2px; } .ds-row span { font-variant-numeric: tabular-nums; font-size: 11px; }"
+    },
+    {
+      "name": "Balloon Tip",
+      "kind": "custom",
+      "refersTo": "balloon-tip",
+      "description": "Tray notification balloon.",
+      "html": "<div class=\"ds-balloon\"><b>Welcome to Jal's desktop</b><p>Hiring? My resume and email are one click away.</p></div>",
+      "css": ".ds-balloon { position: relative; width: 280px; padding: 10px 12px; border: 1px solid #000; border-radius: 8px; background: #ffffe1; box-shadow: 2px 5px 12px rgba(0,0,0,.3); font: 12px Tahoma, sans-serif; } .ds-balloon p { margin: 6px 0 0; line-height: 1.45; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Logged-In Desktop",
+    "overview": "The portfolio is a computer the visitor logs into, not a page they scroll. Every piece of content is an application with its own native early-2000s grammar: the projects are an Explorer folder, a project is an Image Preview, experience is a details-view list, the bio is a Notepad file, contact is a New Message window, the toolkit is System Properties with a Device Manager tree, and the favorite music is a skinned player. The world is Windows XP's Luna theme, rebuilt from scratch with original artwork and parody names, never copied Microsoft assets.\n\nCommitment is total. Every atom speaks Luna: royal-blue gradient title bars, a green Start button, beige dialog bodies, task-pane blues, orange hover glow on push buttons, dotted focus rectangles, shaded 48px icons. Under the skin the core is modern: responsive (windows open maximized on phones), keyboard operable, reduced-motion aware, and sound and cursor effects off until the visitor turns them on.\n\nDensity is desktop-native: chrome sizes are small (12–13px labels), but reading content (summaries, experience bullets, project descriptions) sits at 13.5–14px with 1.55 line height so a recruiter can actually read it.",
+    "keyCharacteristics": [
+      "Content as applications, each in its period-correct form.",
+      "One state vocabulary everywhere: active/inactive title bars, pressed taskbar buttons, selection blue, dotted focus.",
+      "Authored, shaded icon set; original sky-and-hill wallpaper.",
+      "Opt-in nostalgia: boot ritual once per session, synthesized sounds and pixel cursor behind tray toggles."
+    ],
+    "rules": [
+      { "name": "The Chrome Is Blue, The Body Is Beige Rule", "body": "Window chrome is Luna blue; window bodies are dialog beige or paper white. No third surface color is introduced for content containers.", "section": "colors" },
+      { "name": "The Earned Orange Rule", "body": "Orange appears only as XP used it: header hairlines, selected-tab edges, hover glow. Never as a fill or a call-to-action color.", "section": "colors" },
+      { "name": "The Readable Payload Rule", "body": "Chrome may be 12px; anything a recruiter reads to decide (descriptions, bullets, summaries) is 13.5px or larger.", "section": "typography" },
+      { "name": "The No Kicker Rule", "body": "Headings stand alone. No small label or eyebrow above a heading; the window title already names the context.", "section": "typography" },
+      { "name": "The Stack Is The Depth Rule", "body": "Elevation exists only between windows and popups. Content inside a window never floats on its own shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do express every new piece of content as an XP application with its native anatomy (menu bar, address bar, status bar, group boxes, tabs).",
+      "Do keep active/inactive, pressed and selected states visibly distinct on every new control.",
+      "Do keep resume and email one click from the first viewport (Welcome tasks, tray mail, Start menu, balloon).",
+      "Do author new icons in the existing shaded 48px style, referencing the shared gradient sprite.",
+      "Do keep sound and cursor effects opt-in and honor prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't copy Microsoft assets: no Windows flag, no Bliss photograph, no real startup sound, no real product names.",
+      "Don't use stock web-app gray, rounded cards, or modern pill buttons inside a window.",
+      "Don't add a kicker or eyebrow label above any heading.",
+      "Don't fake functionality: decorative menu-bar words stay non-interactive, and nothing pretends to play audio, send mail, or restore files it can't.",
+      "Don't let a tip or popup sit on content: balloons dismiss on any tap elsewhere or when a window opens."
+    ]
+  }
+}

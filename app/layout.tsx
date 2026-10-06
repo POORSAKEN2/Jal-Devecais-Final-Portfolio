@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
-import { LenisProvider } from "@/components/LenisProvider";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jal Devecais | Portfolio",
-  description: "Jal Devecais is a software developer based in Bacolod City building clean SaaS-style portfolio experiences."
+  title: "Jal Devecais | Software Developer",
+  description:
+    "Portfolio of Jal Devecais, a software developer in Bacolod City, Philippines, building mobile apps, websites, and business systems.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#245edb",
 };
 
 export default function RootLayout({
@@ -14,8 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-paper font-sans text-ink antialiased">
-        <LenisProvider>{children}</LenisProvider>
+      <body>
+        <noscript>
+          <style>{".boot,.logon{display:none!important}"}</style>
+        </noscript>
+        {children}
       </body>
     </html>
   );
