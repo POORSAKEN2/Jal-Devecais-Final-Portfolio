@@ -22,19 +22,19 @@ Shipped, real-world work across mobile and web for actual companies (RazeTech, Y
 
 - Single-page Next.js 15 site (App Router, React 19, TypeScript, Tailwind 3), deployed as a static-capable site.
 - Visitors reach contact through email (`jaldevecais2@gmail.com`, Gmail compose link), phone (`09922472512`), GitHub (`github.com/POORSAKEN2`) and LinkedIn.
-- Resume is served from `/resume.pdf`; the owner will add the file to `public/`.
+- Resume is served from `/Jal_Devecais_Resume.pdf` (`public/Jal_Devecais_Resume.pdf`).
 
 ## Capabilities and Constraints
 
 - Content to preserve: 5 projects (Wise Buddy, Real Estate Management, EcoTagger, YouLink Earn, Pulse), 5 experience entries with detail bullets, favorite music (4 tracks with cover art), socials, and contacts.
 - Stack listing shows tools Jal has actually used, derived from his projects and README, not a generic recommended stack. Owner to correct afterwards.
 - Must stay responsive and accessible underneath any stylized presentation; mobile visitors must get a fully working site.
-- Sound and cursor effects must be opt-in, off by default.
+- Sound is on by default (owner decision, 2026-10-06), with a tray toggle to mute. The retro cursor is opt-in, off by default.
 
 ## Brand Commitments
 
 - Name: Jal Devecais. Location: Bacolod City, Philippines.
-- Owner-chosen direction for the 2026 redesign: early-2000s nostalgia, specifically a Windows XP desktop metaphor, with a boot intro, a period media-player for the music, and optional retro cursor and sounds.
+- Owner-chosen direction for the 2026 redesign: early-2000s nostalgia, specifically a Windows XP desktop metaphor, with a boot intro, a period media-player for the music, period sounds on by default, and an optional retro cursor.
 
 ## Evidence on Hand
 
@@ -51,4 +51,4 @@ Shipped, real-world work across mobile and web for actual companies (RazeTech, Y
 
 ## Accessibility & Inclusion
 
-Keyboard operable throughout, honors `prefers-reduced-motion`, no autoplaying sound, and readable text contrast despite period styling.
+Keyboard operable throughout, honors `prefers-reduced-motion`, a one-click mute in the tray, and readable text contrast despite period styling.

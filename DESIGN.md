@@ -106,7 +106,7 @@ components:
 
 The portfolio is a computer the visitor logs into, not a page they scroll. Every piece of content is an application with its own native early-2000s grammar: the projects are an Explorer folder, a project is an Image Preview, experience is a details-view list, the bio is a Notepad file, contact is a New Message window, the toolkit is System Properties with a Device Manager tree, and the favorite music is a skinned player. The world is Windows XP's Luna theme, rebuilt from scratch with original artwork and parody names, never copied Microsoft assets.
 
-Commitment is total. Every atom speaks Luna: royal-blue gradient title bars, a green Start button, beige dialog bodies, task-pane blues, orange hover glow on push buttons, dotted focus rectangles, shaded 48px icons. Under the skin the core is modern: responsive (windows open maximized on phones), keyboard operable, reduced-motion aware, and sound and cursor effects off until the visitor turns them on.
+Commitment is total. Every atom speaks Luna: royal-blue gradient title bars, a green Start button, beige dialog bodies, task-pane blues, orange hover glow on push buttons, dotted focus rectangles, shaded 48px icons. Under the skin the core is modern: responsive (windows open maximized on phones), keyboard operable, reduced-motion aware, with sound on by default behind a tray mute and the retro cursor off until the visitor turns it on.
 
 Density is desktop-native: chrome sizes are small (12–13px labels), but reading content (summaries, experience bullets, project descriptions) sits at 13.5–14px with 1.55 line height so a recruiter can actually read it.
 
@@ -114,7 +114,7 @@ Density is desktop-native: chrome sizes are small (12–13px labels), but readin
 - Content as applications, each in its period-correct form.
 - One state vocabulary everywhere: active/inactive title bars, pressed taskbar buttons, selection blue, dotted focus.
 - Authored, shaded icon set; original sky-and-hill wallpaper.
-- Opt-in nostalgia: boot ritual once per session, synthesized sounds and pixel cursor behind tray toggles.
+- Nostalgia with an off switch: boot ritual once per session, synthesized sounds on by default with a tray mute, pixel cursor opt-in.
 
 ## Colors
 
@@ -222,7 +222,7 @@ A skinned player in metal chrome: black LCD with green digits, a scrolling marqu
 - **Do** keep active/inactive, pressed and selected states visibly distinct on every new control.
 - **Do** keep resume and email one click from the first viewport (Welcome tasks, tray mail, Start menu, balloon).
 - **Do** author new icons in the existing shaded 48px style, referencing the shared gradient sprite.
-- **Do** keep sound and cursor effects opt-in and honor `prefers-reduced-motion`.
+- **Do** keep a one-click sound mute in the tray, keep the retro cursor opt-in, and honor `prefers-reduced-motion`.
 
 ### Don't:
 - **Don't** copy Microsoft assets: no Windows flag, no Bliss photograph, no real startup sound, no real product names.

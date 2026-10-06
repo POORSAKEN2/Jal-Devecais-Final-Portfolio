@@ -31,11 +31,12 @@ export function useOs() {
   return os;
 }
 
-function readFlag(key: string) {
+function readFlag(key: string, fallback: boolean) {
   try {
-    return window.localStorage.getItem(key) === "1";
+    const value = window.localStorage.getItem(key);
+    return value === null ? fallback : value === "1";
   } catch {
-    return false;
+    return fallback;
   }
 }
 
@@ -47,14 +48,14 @@ function writeFlag(key: string, value: boolean) {
   }
 }
 
-// Sound and the retro cursor are opt-in, off by default, remembered per browser.
+// Sound is on by default; the retro cursor is opt-in. Both are remembered per browser.
 export function useSettings() {
   const [soundOn, setSoundOn] = useState(false);
   const [cursorOn, setCursorOn] = useState(false);
 
   useEffect(() => {
-    setSoundOn(readFlag("jalxp-sound"));
-    setCursorOn(readFlag("jalxp-cursor"));
+    setSoundOn(readFlag("jalxp-sound", true));
+    setCursorOn(readFlag("jalxp-cursor", false));
   }, []);
 
   const toggleSound = useCallback(() => {
