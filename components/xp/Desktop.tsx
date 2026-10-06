@@ -138,21 +138,25 @@ export function Desktop() {
   }, []);
 
   const advanceBoot = useCallback(() => {
-    setPhase((p) => {
-      if (p === "boot") return "welcome";
-      if (p === "welcome") {
-        try {
-          window.sessionStorage.setItem("jalxp-booted", "1");
-        } catch {
-          /* ignore */
-        }
-        if (soundRef.current) sounds.startup();
-        window.setTimeout(() => setBalloon(true), 900);
-        return "done";
-      }
-      return p;
-    });
+    setPhase((p) => (p === "boot" ? "welcome" : p === "welcome" ? "done" : p));
   }, []);
+
+  // Side effects of finishing the log-on live here, not in the state updater,
+  // so they fire exactly once per boot.
+  const prevPhase = useRef<BootPhase>(phase);
+  useEffect(() => {
+    const was = prevPhase.current;
+    prevPhase.current = phase;
+    if (was !== "welcome" || phase !== "done") return;
+    try {
+      window.sessionStorage.setItem("jalxp-booted", "1");
+    } catch {
+      /* ignore */
+    }
+    if (soundRef.current) sounds.startup();
+    const t = window.setTimeout(() => setBalloon(true), 900);
+    return () => window.clearTimeout(t);
+  }, [phase]);
 
   useEffect(() => {
     if (!balloon) return;

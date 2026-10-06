@@ -58,12 +58,11 @@ export function useSettings() {
   }, []);
 
   const toggleSound = useCallback(() => {
-    setSoundOn((on) => {
-      writeFlag("jalxp-sound", !on);
-      if (!on) sounds.notify();
-      return !on;
-    });
-  }, []);
+    const next = !soundOn;
+    writeFlag("jalxp-sound", next);
+    if (next) sounds.startup();
+    setSoundOn(next);
+  }, [soundOn]);
 
   const toggleCursor = useCallback(() => {
     setCursorOn((on) => {
