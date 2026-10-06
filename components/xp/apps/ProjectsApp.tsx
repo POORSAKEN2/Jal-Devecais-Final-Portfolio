@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { profile, projects } from "@/data/portfolio";
+import { projects } from "@/data/portfolio";
 import { BriefcaseIcon, MailIcon, NotepadIcon, PdfIcon } from "../icons";
 import { useOs } from "../os";
 import { ExplorerFrame, PanePanel } from "./ExplorerFrame";
@@ -16,9 +16,9 @@ export function ProjectsApp() {
       pane={
         <>
           <PanePanel title="Hiring tasks">
-            <a href={profile.resumeHref} target="_blank" rel="noreferrer" className="pane-link">
+            <button type="button" className="pane-link" onClick={() => os.open("resume")}>
               <PdfIcon size={16} /> Open my resume
-            </a>
+            </button>
             <button type="button" className="pane-link" onClick={() => os.open("mail")}>
               <MailIcon size={16} /> Email me about a role
             </button>

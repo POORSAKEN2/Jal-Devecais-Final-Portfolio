@@ -12,7 +12,8 @@ export type AppId =
   | "mail"
   | "system"
   | "music"
-  | "recycle";
+  | "recycle"
+  | "resume";
 
 export type OsApi = {
   open: (id: AppId) => void;

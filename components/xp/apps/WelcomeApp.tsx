@@ -27,9 +27,9 @@ export function WelcomeApp() {
             </button>
           </li>
           <li>
-            <a href={profile.resumeHref} target="_blank" rel="noreferrer" onClick={() => os.play("open")}>
+            <button type="button" onClick={() => os.open("resume")}>
               <GoArrow /> Open my resume (PDF)
-            </a>
+            </button>
           </li>
           <li>
             <button type="button" onClick={() => os.open("experience")}>

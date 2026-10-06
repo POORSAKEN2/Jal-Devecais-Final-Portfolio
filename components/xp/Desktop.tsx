@@ -34,6 +34,7 @@ import { MusicApp } from "./apps/MusicApp";
 import { NotepadApp } from "./apps/NotepadApp";
 import { ProjectsApp } from "./apps/ProjectsApp";
 import { RecycleApp } from "./apps/RecycleApp";
+import { ResumeApp } from "./apps/ResumeApp";
 import { SystemApp } from "./apps/SystemApp";
 import { ViewerApp } from "./apps/ViewerApp";
 import { WelcomeApp } from "./apps/WelcomeApp";
@@ -59,21 +60,20 @@ const APPS: Record<AppId, AppSpec> = {
   system: { title: "System Properties", Icon: ComputerIcon, w: 440, h: 520, resizable: false, render: () => <SystemApp /> },
   music: { title: "JalAmp", Icon: PlayerIcon, w: 400, h: 400, skin: "amp", resizable: false, render: () => <MusicApp /> },
   recycle: { title: "Recycle Bin", Icon: RecycleIcon, w: 560, h: 380, render: () => <RecycleApp /> },
+  resume: { title: "Resume.pdf - Document Viewer", Icon: PdfIcon, w: 760, h: 900, render: () => <ResumeApp /> },
 };
 
-type DesktopItem =
-  | { kind: "app"; id: AppId; label: string; Icon: AppSpec["Icon"] }
-  | { kind: "link"; href: string; label: string; Icon: AppSpec["Icon"] };
+type DesktopItem = { id: AppId; label: string; Icon: AppSpec["Icon"] };
 
 const DESKTOP_ITEMS: DesktopItem[] = [
-  { kind: "app", id: "projects", label: "My Projects", Icon: FolderIcon },
-  { kind: "link", href: profile.resumeHref, label: "Resume.pdf", Icon: PdfIcon },
-  { kind: "app", id: "experience", label: "My Experience", Icon: BriefcaseIcon },
-  { kind: "app", id: "about", label: "About Me.txt", Icon: NotepadIcon },
-  { kind: "app", id: "mail", label: "Email Jal", Icon: MailIcon },
-  { kind: "app", id: "music", label: "JalAmp", Icon: PlayerIcon },
-  { kind: "app", id: "system", label: "My Toolkit", Icon: ComputerIcon },
-  { kind: "app", id: "recycle", label: "Recycle Bin", Icon: RecycleIcon },
+  { id: "projects", label: "My Projects", Icon: FolderIcon },
+  { id: "resume", label: "Resume.pdf", Icon: PdfIcon },
+  { id: "experience", label: "My Experience", Icon: BriefcaseIcon },
+  { id: "about", label: "About Me.txt", Icon: NotepadIcon },
+  { id: "mail", label: "Email Jal", Icon: MailIcon },
+  { id: "music", label: "JalAmp", Icon: PlayerIcon },
+  { id: "system", label: "My Toolkit", Icon: ComputerIcon },
+  { id: "recycle", label: "Recycle Bin", Icon: RecycleIcon },
 ];
 
 type Win = { id: AppId; frame: WindowFrame | null; z: number; minimized: boolean; maximized: boolean };
@@ -356,41 +356,20 @@ export function Desktop() {
 
         <nav className="desktop__icons" aria-label="Desktop">
           {DESKTOP_ITEMS.map((item) => {
-            const key = item.kind === "app" ? item.id : item.href;
-            const inner = (
-              <>
-                <item.Icon size={48} />
-                <span className="desk-icon__label">{item.label}</span>
-              </>
-            );
-            return item.kind === "app" ? (
+            return (
               <button
-                key={key}
+                key={item.id}
                 type="button"
                 className="desk-icon"
-                data-selected={selectedIcon === key || undefined}
+                data-selected={selectedIcon === item.id || undefined}
                 onClick={() => {
-                  setSelectedIcon(key);
+                  setSelectedIcon(item.id);
                   open(item.id);
                 }}
               >
-                {inner}
+                <item.Icon size={48} />
+                <span className="desk-icon__label">{item.label}</span>
               </button>
-            ) : (
-              <a
-                key={key}
-                className="desk-icon"
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                data-selected={selectedIcon === key || undefined}
-                onClick={() => {
-                  setSelectedIcon(key);
-                  play("open");
-                }}
-              >
-                {inner}
-              </a>
             );
           })}
         </nav>
@@ -448,21 +427,13 @@ export function Desktop() {
                     <WelcomeIcon size={24} /> <strong>Welcome</strong>
                   </button>
                 </li>
-                {DESKTOP_ITEMS.map((item) =>
-                  item.kind === "app" ? (
-                    <li key={item.id}>
-                      <button type="button" onClick={() => open(item.id)}>
-                        <item.Icon size={24} /> <strong>{item.label}</strong>
-                      </button>
-                    </li>
-                  ) : (
-                    <li key={item.href}>
-                      <a href={item.href} target="_blank" rel="noreferrer" onClick={() => setStartOpen(false)}>
-                        <item.Icon size={24} /> <strong>{item.label}</strong>
-                      </a>
-                    </li>
-                  ),
-                )}
+                {DESKTOP_ITEMS.map((item) => (
+                  <li key={item.id}>
+                    <button type="button" onClick={() => open(item.id)}>
+                      <item.Icon size={24} /> <strong>{item.label}</strong>
+                    </button>
+                  </li>
+                ))}
               </ul>
             ) : (
             <ul className="startmenu__left">
@@ -476,13 +447,13 @@ export function Desktop() {
                 </button>
               </li>
               <li>
-                <a href={profile.resumeHref} target="_blank" rel="noreferrer" onClick={() => setStartOpen(false)}>
+                <button type="button" onClick={() => open("resume")}>
                   <PdfIcon size={32} />
                   <span>
                     <strong>Resume.pdf</strong>
-                    <small>Download or print</small>
+                    <small>View, save, or print</small>
                   </span>
-                </a>
+                </button>
               </li>
               <li>
                 <button type="button" onClick={() => open("experience")}>
@@ -659,9 +630,9 @@ export function Desktop() {
             </p>
             <p className="balloon__text">Hiring? My resume and email are one click away.</p>
             <p className="balloon__actions">
-              <a href={profile.resumeHref} target="_blank" rel="noreferrer">
+              <button type="button" onClick={() => open("resume")}>
                 Open Resume.pdf
-              </a>
+              </button>
               <button
                 type="button"
                 onClick={() => {

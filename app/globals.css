@@ -2516,3 +2516,60 @@ html.xp-cursor textarea {
     text-overflow: ellipsis;
   }
 }
+
+/* ---------- Document Viewer (resume) ---------- */
+
+.docviewer {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.docviewer__toolbar {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px 6px;
+  border-bottom: 1px solid var(--beige-line);
+}
+
+.docviewer__stage {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  background: #808080;
+  box-shadow: inset 1px 1px 0 #5a5a5a;
+}
+
+.docviewer__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #808080;
+}
+
+.docviewer__fallback {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  background: var(--beige);
+  text-align: center;
+}
+
+.docviewer__fallback p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.docviewer__fallback-actions {
+  display: flex;
+  gap: 8px;
+}

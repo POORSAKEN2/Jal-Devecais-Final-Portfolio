@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent } from "react";
-import { experiences, profile } from "@/data/portfolio";
+import { experiences } from "@/data/portfolio";
 import { BriefcaseIcon, PdfIcon } from "../icons";
 import { useOs } from "../os";
 
@@ -69,9 +69,9 @@ export function ExperienceApp() {
             ))}
           </ul>
         </fieldset>
-        <a className="xp-btn xp-btn--icon" href={profile.resumeHref} target="_blank" rel="noreferrer">
+        <button type="button" className="xp-btn xp-btn--icon" onClick={() => os.open("resume")}>
           <PdfIcon size={16} /> Open full resume
-        </a>
+        </button>
       </article>
     </div>
   );
