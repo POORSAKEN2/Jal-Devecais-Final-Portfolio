@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export type BootPhase = "boot" | "welcome" | "off" | "done";
+export type BootPhase = "power" | "boot" | "welcome" | "off" | "done";
 
 type BootScreenProps = {
   phase: BootPhase;
@@ -31,6 +31,19 @@ export function BootScreen({ phase, onAdvance, onPowerOn }: BootScreenProps) {
   }, [phase, onAdvance]);
 
   if (phase === "done") return null;
+
+  // First visit starts powered down: the click that turns it on also unlocks audio,
+  // so the startup sound can play the moment loading finishes.
+  if (phase === "power") {
+    return (
+      <div className="screen-off screen-off--power" role="dialog" aria-modal="true" aria-label="Computer is off">
+        <p>MyPortfolio XP</p>
+        <button type="button" className="screen-off__btn" onClick={onPowerOn} autoFocus>
+          Turn it on
+        </button>
+      </div>
+    );
+  }
 
   if (phase === "off") {
     return (

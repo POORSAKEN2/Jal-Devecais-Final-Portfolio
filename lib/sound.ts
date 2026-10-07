@@ -16,6 +16,12 @@ function audio() {
   return ctx;
 }
 
+// Browsers keep audio suspended until a user gesture. Call this from a click or
+// key handler so later sounds play on time instead of queueing until the next click.
+export function unlockAudio() {
+  audio();
+}
+
 // A generated hall impulse: decaying stereo noise, so the themes bloom like a big room.
 function hall(a: AudioContext) {
   if (reverb) return reverb;

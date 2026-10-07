@@ -2160,6 +2160,10 @@ button {
   font: 20px var(--font-ui);
 }
 
+.screen-off--power p {
+  color: #c9c9c9;
+}
+
 .screen-off__btn {
   justify-self: center;
   padding: 8px 18px;

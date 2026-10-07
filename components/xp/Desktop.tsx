@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { profile, projects } from "@/data/portfolio";
-import { sounds, type SoundName } from "@/lib/sound";
+import { sounds, unlockAudio, type SoundName } from "@/lib/sound";
 import { BootScreen, type BootPhase } from "./BootScreen";
 import {
   BriefcaseIcon,
@@ -97,7 +97,7 @@ function placeFrame(id: AppId, cascade: number): WindowFrame {
 }
 
 export function Desktop() {
-  const [phase, setPhase] = useState<BootPhase>("boot");
+  const [phase, setPhase] = useState<BootPhase>("power");
   const [wins, setWins] = useState<Win[]>([{ id: "welcome", frame: null, z: 1, minimized: false, maximized: false }]);
   const [projectIndex, setProjectIndex] = useState(0);
   const [startOpen, setStartOpen] = useState(false);
@@ -141,19 +141,27 @@ export function Desktop() {
     setPhase((p) => (p === "boot" ? "welcome" : p === "welcome" ? "done" : p));
   }, []);
 
-  // Side effects of finishing the log-on live here, not in the state updater,
+  const powerOn = useCallback(() => {
+    unlockAudio();
+    setPhase("boot");
+  }, []);
+
+  // Side effects of boot transitions live here, not in the state updater,
   // so they fire exactly once per boot.
   const prevPhase = useRef<BootPhase>(phase);
   useEffect(() => {
     const was = prevPhase.current;
     prevPhase.current = phase;
+    if (was === "boot" && phase === "welcome") {
+      if (soundRef.current) sounds.startup();
+      return;
+    }
     if (was !== "welcome" || phase !== "done") return;
     try {
       window.sessionStorage.setItem("jalxp-booted", "1");
     } catch {
       /* ignore */
     }
-    if (soundRef.current) sounds.startup();
     const t = window.setTimeout(() => setBalloon(true), 900);
     return () => window.clearTimeout(t);
   }, [phase]);
@@ -688,7 +696,7 @@ export function Desktop() {
         </button>
       ) : null}
 
-      <BootScreen phase={phase} onAdvance={advanceBoot} onPowerOn={() => setPhase("boot")} />
+      <BootScreen phase={phase} onAdvance={advanceBoot} onPowerOn={powerOn} />
     </OsContext.Provider>
   );
 }
